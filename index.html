@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<script>
+    let iosLink = "https://i.diawi.com/gV3qN3";
+    let androidLink = "https://i.diawi.com/Xdvhwr";
+
+    document.addEventListener("DOMContentLoaded", function(event) { 
+        if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+            console.log("Detected iOS device");
+            window.location.href = iosLink;
+        }
+        else if ( /Android/i.test(navigator.userAgent) ) {
+            console.log("Detected Android device");
+            window.location.href = androidLink;
+        }
+        else {
+            console.log("Your platform is not supported");
+
+            let infoElm = document.getElementById("user-info");
+            infoElm.innerHTML = "Detected unsupported platform. Select link to proceed manually."
+
+            let linksElm = document.getElementById("links-wrapper");
+            let ios = document.getElementById("ios-link");
+            let android = document.getElementById("android-link");
+            ios.href = iosLink;
+            android.href = androidLink;
+            linksElm.style.display = "block";
+        }
+    });
+
+</script>
+  <head>
+    <title>AWACS App Download</title>
+  </head>
+  <body>
+    <p id="user-info">Redirecting to app download</p>
+    <div id="links-wrapper" style="display:none;">
+        <a id="ios-link" href="">iOS App</a>
+        <a id="android-link" href="">Android App</a>
+    </div>
+  </body>
+</html>
